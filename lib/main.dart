@@ -33,9 +33,12 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text('widget.title'),
       ),
       body: Center(
-        child: Row(
+        child: Column(
           children: [
             SideBar(icon: Icons.home, title: "Home"),
+            SideBar(icon: Icons.library_books, title: "Courses"),
+            SideBar(icon: Icons.credit_card, title: "Billing"),
+            SideBar(icon: Icons.settings, title: "Setting"),
           ],
         ),
       ),
@@ -54,40 +57,43 @@ class SideBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 42.0,
-      height: 42.0,
-      padding: EdgeInsets.all(10.0),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(14.0),
+    return Row(
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8.0),
+          child: Container(
+            width: 42.0,
+            height: 42.0,
+            padding: EdgeInsets.all(10.0),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(14.0),
 //             Gradient
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.topRight,
-          colors: [
-            Color(0xFF00AEFF),
-            Color(0xFF0076FF),
-          ],
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.topRight,
+                colors: [
+                  Color(0xFF00AEFF),
+                  Color(0xFF0076FF),
+                ],
+              ),
+            ),
+            child: Icon(icon, color: Colors.white),
+          ),
         ),
-      ),
-
-//             Icon
-      child: Icon(icon, color: Colors.white),
-    );
-
-    SizedBox(
-      width: 12.0,
-    );
-
-    Container(
-      child: Text(
-        title,
-        style: TextStyle(
-          fontWeight: FontWeight.w800,
-          fontSize: 16.0,
-          color: Color(0xFF242629),
+        SizedBox(
+          width: 12.0,
         ),
-      ),
+        Container(
+          child: Text(
+            title,
+            style: TextStyle(
+              fontWeight: FontWeight.w800,
+              fontSize: 16.0,
+              color: Color(0xFF242629),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
